@@ -16,7 +16,12 @@ return {
     -- end,
   },
 
+  ["wakatime/vim-wakatime"]={},
 
+  ['sindrets/diffview.nvim'] = {
+    -- requires = 'nvim-lua/plenary.nvim',
+    event = "BufRead",
+  },
 
   ["vimwiki/vimwiki"] = {
     config = function()
@@ -35,28 +40,29 @@ return {
     end
   },
 
-  ["ggandor/lightspeed.nvim"] = {event = "BufRead",}
+  ["ggandor/lightspeed.nvim"] = {event = "BufRead",},
+
   -- Override plugin definition options
-  -- ["neovim/nvim-lspconfig"] = {
-  --   config = function()
-  --     require "plugins.configs.lspconfig"
-  --     require "custom.plugins.lspconfig"
-  --   end,
-  -- },
-  --
-  -- -- overrde plugin configs
-  -- ["nvim-treesitter/nvim-treesitter"] = {
-  --   override_options = overrides.treesitter,
-  -- },
-  --
-  -- ["williamboman/mason.nvim"] = {
-  --   override_options = overrides.mason,
-  -- },
-  --
-  -- ["kyazdani42/nvim-tree.lua"] = {
-  --   override_options = overrides.nvimtree,
-  -- },
-  --
+  ["neovim/nvim-lspconfig"] = {
+    config = function()
+      require "plugins.configs.lspconfig"
+      require "custom.plugins.lspconfig"
+    end,
+  },
+
+  -- overrde plugin configs
+  ["nvim-treesitter/nvim-treesitter"] = {
+    override_options = overrides.treesitter,
+  },
+
+  ["williamboman/mason.nvim"] = {
+    override_options = overrides.mason,
+  },
+
+  ["kyazdani42/nvim-tree.lua"] = {
+    override_options = overrides.nvimtree,
+  },
+
   -- -- Install a plugin
   -- ["max397574/better-escape.nvim"] = {
   --   event = "InsertEnter",
@@ -65,13 +71,13 @@ return {
   --   end,
   -- },
   --
-  -- -- code formatting, linting etc
-  -- ["jose-elias-alvarez/null-ls.nvim"] = {
-  --   after = "nvim-lspconfig",
-  --   config = function()
-  --     require "custom.plugins.null-ls"
-  --   end,
-  -- },
+  -- code formatting, linting etc
+  ["jose-elias-alvarez/null-ls.nvim"] = {
+    after = "nvim-lspconfig",
+    config = function()
+      require "custom.plugins.null-ls"
+    end,
+  },
 
   -- remove plugin
   -- ["hrsh7th/cmp-path"] = false,
