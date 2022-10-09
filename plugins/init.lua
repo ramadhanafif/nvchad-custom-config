@@ -2,26 +2,28 @@ local overrides = require "custom.plugins.overrides"
 
 return {
 
-  ["goolord/alpha-nvim"] = { disable = false }, -- enables dashboard
+  ["goolord/alpha-nvim"] = {
+    disable = false,
+    override_options = overrides.alpha
+  },
 
   ["folke/which-key.nvim"] = {
     disable = false,
-    -- module = "which-key",
-    -- keys = { "<leader>", '"', "'", "`" },
-    -- config = function()
-    --   require "plugins.configs.whichkey"
-    -- end,
-    -- setup = function()
-    --   require("core.utils").load_mappings "whichkey"
-    -- end,
+  },
+
+  ["folke/todo-comments.nvim"]={
+  event = "BufRead",
+  config = function()
+    require("todo-comments").setup()
+  end,
   },
 
   ["wakatime/vim-wakatime"]={},
 
-  ['sindrets/diffview.nvim'] = {
-    -- requires = 'nvim-lua/plenary.nvim',
-    event = "BufRead",
-  },
+  -- ['sindrets/diffview.nvim'] = {
+  --   requires = 'nvim-lua/plenary.nvim',
+  --   event = "BufRead",
+  -- },
 
   ["vimwiki/vimwiki"] = {
     config = function()
@@ -40,7 +42,9 @@ return {
     end
   },
 
-  ["ggandor/lightspeed.nvim"] = {event = "BufRead",},
+  ["ggandor/lightspeed.nvim"] = {
+    event = "BufRead",
+  },
 
   -- Override plugin definition options
   ["neovim/nvim-lspconfig"] = {
@@ -74,6 +78,7 @@ return {
   -- code formatting, linting etc
   ["jose-elias-alvarez/null-ls.nvim"] = {
     after = "nvim-lspconfig",
+    disable = true,
     config = function()
       require "custom.plugins.null-ls"
     end,
