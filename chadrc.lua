@@ -9,5 +9,4 @@ M.ui = {
 
 M.plugins = require "custom.plugins"
 
-
 return M
